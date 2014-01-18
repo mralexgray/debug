@@ -1,30 +1,25 @@
-//
-//  DebugPref.h
-//  Debug
-//
-//  Created by Timothy Perfitt on 11/6/09.
-//  Copyright (c) 2013 twocanoes. All rights reserved.
-//
 
+/*  DebugPref.h  *  Debug
+    Created by Timothy Perfitt on 11/6/09. Cpyright (c) 2013 twocanoes. All rights reserved. */
+
+#import <Cocoa/Cocoa.h>
 #import <PreferencePanes/PreferencePanes.h>
 #import <SecurityInterface/SFAuthorizationView.h>
 #include <string.h>
-@interface DebugPref : NSPreferencePane 
-{
-    AuthorizationRef authorization;
-    IBOutlet SFAuthorizationView *lockView;
-    BOOL isEnabled,isDSDebugging,isLoggingDNS,isDoingNetworkTrace,isTracingDNS,
-    isTracingKerberos,isTracingLDAP,isSyslogDebug,hasUnappledChanges;
 
-}
-@property BOOL isEnabled,isDSDebugging,isLoggingDNS,isDoingNetworkTrace,isTracingDNS,isTracingKerberos,
-            isTracingLDAP,isSyslogDebug,hasUnappledChanges;
--(IBAction)apply:(id)sender;
-- (void) mainViewDidLoad;
+@interface DebugPref : NSPreferencePane
 
--(void)save;
--(IBAction)optionChanged:(id)sender;
--(void)setDefaults;
--(IBAction)revert:(id)sender;
--(IBAction)compressAndSendToDesktop:(id)sender;
+@property IBOutlet SFAuthorizationView * lockView;
+@property             AuthorizationRef   authorization;
+
+@property BOOL hasUnappledChanges, isTracingKerberos, isDoingNetworkTrace, isDSDebugging,
+               isTracingLDAP, isEnabled, isLoggingDNS, isTracingDNS, isSyslogDebug;
+
+- (IBAction)                    apply:(id)x;
+- (IBAction)            optionChanged:(id)x;
+- (IBAction)                   revert:(id)x;
+- (IBAction) compressAndSendToDesktop:(id)x;
+-     (void) mainViewDidLoad;
+-     (void) save;
+-     (void) setDefaults;
 @end
